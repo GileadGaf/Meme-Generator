@@ -14,13 +14,23 @@
         <h1>My Meme Generator</h1>
     </header>
     <main class="editor-box">
+
         <section class="control-box">
+            <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
+            <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
             <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
+            <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
+            <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
+            <img src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchSelectedLines()">
+
         </section>
         <canvas class="canvas" height="500px" width="500px">
 
         </canvas>
+        <button class="back-gallery btn" onclick="backToGallery()">Gallery➡</button>
     </main>
+    <section class="images-gallery">
+    </section>
     <footer>
         <h3>Coffee Rights Gilead Gafni</h3>
     </footer>

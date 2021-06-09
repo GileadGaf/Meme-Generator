@@ -24,3 +24,59 @@ body {
 .canvas {
     background-color: aquamarine;
 }
+
+
+/* Images Gallery */
+
+.images-gallery {
+    width: 100%;
+}
+
+.images-gallery img {
+    width: 200px;
+    margin: 5px;
+}
+
+.images-gallery img:hover {
+    cursor: pointer;
+}
+
+
+/* CANVAS EDITOR  */
+
+.editor-box {
+    width: 100%;
+}
+
+.editor-box .btn {
+    font-size: 1rem;
+    border: 1px solid #222;
+    background-color: #fff;
+}
+
+.editor-box .btn:hover {
+    background-color: rgb(180, 176, 176);
+    cursor: pointer;
+}
+
+
+/*  CONTROL BOX */
+
+.editor-box .control-box {
+    width: 100%;
+    height: 100px;
+}
+
+.editor-box .control-box * {
+    line-height: 1.5;
+    margin: 5px;
+}
+
+.editor-box .control-box img {
+    width: 30px;
+    vertical-align: middle;
+}
+
+.editor-box .control-box img:hover {
+    cursor: pointer;
+}
