@@ -1,0 +1,13 @@
+/* BASE */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: rgb(37, 36, 36);
+}
+
+body {
+    text-align: center;
+}
