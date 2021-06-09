@@ -10,36 +10,36 @@
 </head>
 
 <body onload="onInit()">
-    <header>
-        <h1>My Meme Generator</h1>
-    </header>
-    <main class="editor-box">
-        <header class="topbar">
-            <h2>Edit Meme</h2>
-            <button class="back-gallery btn" onclick="backToGallery()">Gallery➡</button>
+    <section class="main-container">
+        <header>
+            <h1>My Meme Generator</h1>
         </header>
-        <section class="canvas-container">
-            <canvas class="canvas" height="500" width="500" onmousedown="console.log(event)">
+        <main class="editor-box">
+            <header class="topbar">
+                <h2>Edit Meme</h2>
+                <button class="back-gallery btn" onclick="backToGallery()">Gallery➡</button>
+            </header>
+            <section class="canvas-container">
+                <canvas class="canvas" height="500" width="500" onmousedown="console.log(event)">
 
             </canvas>
+            </section>
+            <section class="control-box">
+                <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
+                <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
+                <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
+                <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
+                <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
+                <img src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchSelectedLines()">
+            </section>
+
+        </main>
+        <section class="images-gallery">
         </section>
-
-        <section class="control-box">
-            <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
-            <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
-            <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
-            <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
-            <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
-            <img src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchSelectedLines()">
-
-        </section>
-
-    </main>
-    <section class="images-gallery">
+        <footer>
+            <!-- <h3>Coffee Rights Gilead Gafni</h3> -->
+        </footer>
     </section>
-    <footer>
-        <h3>Coffee Rights Gilead Gafni</h3>
-    </footer>
     <script src="js/services/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>

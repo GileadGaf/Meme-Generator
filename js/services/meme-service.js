@@ -10,14 +10,14 @@ var gMeme = {
             size: 32,
             align: 'center',
             color: 'black',
-            pos: { x: 150, y: 50 }
+            pos: { x: 0, y: 0 }
         },
         {
             txt: 'I always eat Falafel',
             size: 32,
             align: 'center',
             color: 'black',
-            pos: { x: 200, y: 480 }
+            pos: { x: 0, y: 0 }
         }
     ]
 }

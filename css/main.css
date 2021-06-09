@@ -18,11 +18,13 @@ html {
 
 body {
     text-align: center;
-    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
 
 footer {
-    margin: 0 auto;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .canvas {
@@ -48,15 +50,15 @@ footer {
 
 /* CANVAS EDITOR  */
 
+.canvas-container {
+    height: 50vh;
+}
+
 .editor-box {
     display: none;
     justify-content: center;
     gap: 10px;
-    align-items: flex-start;
-}
-
-.editor-box .topbar {
-    width: 100%;
+    align-items: center;
 }
 
 .editor-box .btn {
@@ -76,7 +78,7 @@ footer {
 .editor-box .control-box * {
     line-height: 1.5;
     margin: 5px;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .editor-box .control-box img {
@@ -95,8 +97,16 @@ footer {
     display: flex;
 }
 
+
+/* MEDIA QUERIES  */
+
 @media (max-width: 800px) {
     .editor-box {
         flex-direction: column;
+    }
+    .canvas-container {
+        background-color: #fff;
+        /* height: 324px;
+        width: 329px; */
     }
 }
