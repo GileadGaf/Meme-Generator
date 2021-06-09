@@ -21,6 +21,10 @@ body {
     /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
 
+footer {
+    margin: 0 auto;
+}
+
 .canvas {
     background-color: aquamarine;
 }
@@ -45,6 +49,13 @@ body {
 /* CANVAS EDITOR  */
 
 .editor-box {
+    display: none;
+    justify-content: center;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.editor-box .topbar {
     width: 100%;
 }
 
@@ -62,14 +73,10 @@ body {
 
 /*  CONTROL BOX */
 
-.editor-box .control-box {
-    width: 100%;
-    height: 100px;
-}
-
 .editor-box .control-box * {
     line-height: 1.5;
     margin: 5px;
+    display: inline-block;
 }
 
 .editor-box .control-box img {
@@ -79,4 +86,17 @@ body {
 
 .editor-box .control-box img:hover {
     cursor: pointer;
+}
+
+
+/* HELPERS */
+
+.flex {
+    display: flex;
+}
+
+@media (max-width: 800px) {
+    .editor-box {
+        flex-direction: column;
+    }
 }

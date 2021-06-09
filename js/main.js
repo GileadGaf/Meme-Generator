@@ -5,8 +5,8 @@ function onInit() {
     loadImages();
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
-    editMeme();
 }
+
 
 function loadImages() {
     var imgs = getImgs();
@@ -22,15 +22,15 @@ function imgClicked(imgId) {
     var meme = getMeme();
     meme.selectedImgId = imgId;
     editMeme();
-    document.querySelector('.editor-box').hidden = false;
-    document.querySelector('.images-gallery').hidden = true;
+    document.querySelector('.editor-box').classList.add('flex');
+    document.querySelector('.images-gallery').style.display = 'none';
 
 
 }
 
 function backToGallery() {
-    document.querySelector('.editor-box').hidden = true;
-    document.querySelector('.images-gallery').hidden = false;
+    document.querySelector('.editor-box').classList.remove('flex');
+    document.querySelector('.images-gallery').style.display = 'block';
 }
 
 function editMeme() {
@@ -59,32 +59,35 @@ function onChangeCanvasText(canvasText) {
 }
 
 function renderCanvas() {
+
     gCtx.save();
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
     drawImage();
     gCtx.restore();
 }
 
 function addText() {
+
     var memeLines = getMemeLines();
     var selectedLine = getSelectedLine();
     document.querySelector('[name=canvas-text]').value = selectedLine.txt;
     memeLines.forEach(line => {
         drawText(line.txt, line.pos, line.align, line.color, line.size);
 
-    })
+    });
     markText();
+
 
 }
 
 function drawText(text, pos, alignment, color, fontSize) {
     const { x, y } = pos;
-
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'white';
     gCtx.fillStyle = color;
     gCtx.font = fontSize + 'px ' + 'Impact';
-    gCtx.textAlign = alignment
+    gCtx.textAlign = alignment;
+
+    gCtx.moveTo(x, y);
     gCtx.strokeText(text, x, y);
     gCtx.fillText(text, x, y);
 
@@ -92,8 +95,13 @@ function drawText(text, pos, alignment, color, fontSize) {
 
 function markText() {
     var selectedLine = getSelectedLine();
+    var measure = gCtx.measureText(selectedLine.txt);
     gCtx.lineWidth = 2;
-    gCtx.strokeRect(20, selectedLine.pos.y - selectedLine.size - 10, 400 + selectedLine.size, selectedLine.size + 30);
+    gCtx.beginPath();
+    gCtx.rect(selectedLine.pos.x - measure.width / 2 - 10, selectedLine.pos.y - selectedLine.size, selectedLine.pos.x + measure.width / 2 + 10, selectedLine.size + 10);
+    gCtx.stroke();
+
+    gCtx.closePath();
 }
 
 function onChangeFontSize(diff) {
