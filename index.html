@@ -9,14 +9,17 @@
     <title>Meme Generator</title>
 </head>
 
-<body>
+<body onload="onInit()">
     <header>
         <h1>My Meme Generator</h1>
     </header>
     <main class="editor-box">
         <section class="control-box">
-
+            <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
         </section>
+        <canvas class="canvas" height="500px" width="500px">
+
+        </canvas>
     </main>
     <footer>
         <h3>Coffee Rights Gilead Gafni</h3>

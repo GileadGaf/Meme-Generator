@@ -1,3 +1,11 @@
+/*  FONTS */
+
+@font-face {
+    font-family: Impact;
+    src: url(../fonts/impact.ttf);
+}
+
+
 /* BASE */
 
 * {
@@ -10,4 +18,9 @@ html {
 
 body {
     text-align: center;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+}
+
+.canvas {
+    background-color: aquamarine;
 }
