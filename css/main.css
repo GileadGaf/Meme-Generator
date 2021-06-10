@@ -75,10 +75,19 @@ footer {
 
 /*  CONTROL BOX */
 
+.editor-box .control-box {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 .editor-box .control-box * {
     line-height: 1.5;
     margin: 5px;
-    /* display: inline-block; */
+}
+
+.editor-box .control-box .lines-managment {
+    width: 100%;
 }
 
 .editor-box .control-box img {
@@ -88,6 +97,17 @@ footer {
 
 .editor-box .control-box img:hover {
     cursor: pointer;
+}
+
+.control-box .color-pick {
+    background: url(../img/icons/paint-board-and-brush.png) no-repeat;
+    background-size: cover;
+    width: 30px;
+}
+
+.control-box .color-pick input[name=color-picker] {
+    cursor: pointer;
+    opacity: 0;
 }
 
 
@@ -103,10 +123,17 @@ footer {
 @media (max-width: 800px) {
     .editor-box {
         flex-direction: column;
+        flex-wrap: wrap;
     }
     .canvas-container {
         background-color: #fff;
-        /* height: 324px;
-        width: 329px; */
+        /* margin-bottom: 50px; */
+        width: 329px;
+    }
+    .control-box {
+        width: 100%;
+    }
+    .topbar {
+        display: none;
     }
 }

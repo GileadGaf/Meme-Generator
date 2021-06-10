@@ -86,57 +86,83 @@ function addText() {
 
     var memeLines = getMemeLines();
     var selectedLine = getSelectedLine();
-    document.querySelector('[name=canvas-text]').value = selectedLine.txt;
+    //Filling the values of the control box inputs:
+    if (selectedLine) {
+        document.querySelector('[name=canvas-text]').value = selectedLine.txt;
+        document.querySelector('[name=color-picker]').value = selectedLine.color;
+    }
     memeLines.forEach((line, idx) => {
-        drawText(line.txt, idx, line.align, line.color, line.size);
+        var pos = line.pos;
+        if (!pos) {
+            pos = getLinePosIdxBased(idx);
+        }
+        saveLinePos(idx, pos);
+        drawText(line.txt, pos, line.align, line.color, line.size, idx);
 
     });
-    markText();
-
-
 }
+// TODO: Take a look at the options that need to be done again
 
-function drawText(text, lineIdx, alignment, color, fontSize) {
-    var pos = getLinePosIdxBased(lineIdx);
+function drawText(text, pos, alignment, color, fontSize, lineIdx) {
+
+
     gCtx.beginPath();
     gCtx.moveTo(0, 0);
-    gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'white';
-    gCtx.fillStyle = color;
+
+    gCtx.fillStyle = color
+
     gCtx.font = fontSize + 'px ' + 'Impact';
-    gCtx.textAlign = alignment;
-    gCtx.strokeText(text, pos.x, pos.y);
-    gCtx.fillText(text, pos.x, pos.y);
+    gCtx.textAlign = "center";
+    gCtx.textBaseline = "middle";
+    var rectHeight = fontSize + 10;
+    var rectWidth = gCtx.measureText(text).width;
+    var rectX = getAlignmentX(alignment);
+    var rectY = pos.y;
+    if (lineIdx === gMeme.selectedLineIdx) {
+        gCtx.lineWidth = 4;
+        gCtx.strokeStyle = 'white';
+        gCtx.strokeRect(rectX - 10, rectY, rectWidth + 20, rectHeight);
+    }
+    gCtx.strokeStyle = 'black';
+    gCtx.lineWidth = 2;
+    gCtx.fillText(text, rectX + rectWidth / 2, rectY + rectHeight / 2);
+    gCtx.strokeText(text, rectX + rectWidth / 2, rectY + rectHeight / 2);
     gCtx.closePath();
 
 }
 
-function getLinePosIdxBased(lineIdx) {
-    var pos = { x: 100, y: gElCanvas.height / 2 };
-    switch (lineIdx) {
-        case 0:
-            pos.y = 20;
-            break;
+function getAlignmentX(alignment) {
+    switch (alignment) {
+        case 'CENTER':
+            return gElCanvas.width / 4;
+        case 'RIGHT':
+            return gElCanvas.width / 2;
+        case 'LEFT':
+        default:
+            return 0;
+    }
+}
 
+function getLinePosIdxBased(lineIdx) {
+    //Middle pos
+    var pos = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 };
+
+    switch (lineIdx) {
+        //1st line will be at the top of the canvas-about 50px from start
+        case 0:
+            pos.y = 50;
+            break;
+            //2nd line will be at the bottom of the canvas-about 50px from end
         case 1:
-            pos.y = gElCanvas.height - 20;
+            pos.y = gElCanvas.height - 50;
             break;
 
 
     }
+    //The rest of the lines will be positioned at the center of the canvas
     return pos;
 }
 
-function markText() {
-    var selectedLine = getSelectedLine();
-    var measure = gCtx.measureText(selectedLine.txt);
-    gCtx.lineWidth = 2;
-    gCtx.beginPath();
-    gCtx.rect(selectedLine.pos.x - measure.width / 2 - 10, selectedLine.pos.y - selectedLine.size, selectedLine.pos.x + measure.width / 2 + 10, selectedLine.size + 10);
-    gCtx.stroke();
-
-    gCtx.closePath();
-}
 
 function onChangeFontSize(diff) {
     changeFontSize(diff);
@@ -150,5 +176,27 @@ function onChangeTextPos(yDelta) {
 
 function onSwitchSelectedLines() {
     switchSelectedLines();
+    renderCanvas();
+}
+
+function onAddLine() {
+    addLine();
+    renderCanvas();
+}
+
+function onDeleteLine() {
+    deleteLine();
+    renderCanvas();
+
+}
+
+function onChangeTextAlignment(elAlignButton) {
+    var dataAlignment = elAlignButton.getAttribute('data-alignment');
+    setLineAlignment(dataAlignment);
+    renderCanvas();
+}
+
+function onChangeTextColor(color) {
+    setTextColor(color);
     renderCanvas();
 }

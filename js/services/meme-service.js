@@ -8,19 +8,21 @@ var gMeme = {
     lines: [{
             txt: 'I never eat Falafel',
             size: 32,
-            align: 'center',
-            color: 'black',
-            pos: { x: 0, y: 0 }
+            align: 'CENTER',
+            color: '#ffffff',
+            pos: null
         },
         {
             txt: 'I always eat Falafel',
             size: 32,
-            align: 'center',
-            color: 'black',
-            pos: { x: 0, y: 0 }
+            align: 'CENTER',
+            color: '#ffffff',
+            pos: null
         }
     ]
 }
+
+var gDiff = 1;
 
 function getMeme() {
     return gMeme;
@@ -41,29 +43,68 @@ function getMemeLines() {
 }
 
 function getSelectedLine() {
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) return null;
     var selectedLine = gMeme.lines[gMeme.selectedLineIdx];
     return selectedLine;
 }
 
+function saveLinePos(idx, pos) {
+    if (idx < 0 || idx >= gMeme.lines.length) return;
+
+    var line = gMeme.lines[idx];
+    line.pos = pos;
+
+}
+
 function changeCanvasText(canvasText) {
     var selectedLine = getSelectedLine();
-    selectedLine.txt = canvasText;
+    if (selectedLine) selectedLine.txt = canvasText;
 }
 
 function changeFontSize(diff) {
     var selectedLine = getSelectedLine();
-    selectedLine.size += diff;
+    if (selectedLine) selectedLine.size += diff;
 }
 
 function changeTextVerticalPos(yDelta) {
     var selectedLine = getSelectedLine();
-    selectedLine.pos.y += yDelta;
+    if (selectedLine) selectedLine.pos.y += yDelta;
+
 }
 
 function switchSelectedLines() {
-    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
-        gMeme.selectedLineIdx++;
-    } else if (gMeme.selectedLineIdx > 0) {
-        gMeme.selectedLineIdx--;
+    var newIdx = gMeme.selectedLineIdx + 1
+    if (newIdx < 0) {
+        newIdx = gMeme.lines.length - 1;
+    } else
+    if (newIdx === gMeme.lines.length) newIdx = 0;
+    gMeme.selectedLineIdx = newIdx;
+}
+
+function addLine() {
+    var newLine = {
+        txt: 'Enter text here',
+        size: 32,
+        align: 'CENTER',
+        color: '#ffffff',
+        pos: null
     }
+    gMeme.lines.push(newLine);
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+}
+
+function deleteLine() {
+    var lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines.splice(lineIdx, 1);
+    gMeme.selectedLineIdx = 0;
+}
+
+function setLineAlignment(alignment) {
+    var selectedLine = getSelectedLine();
+    if (selectedLine) selectedLine.align = alignment
+}
+
+function setTextColor(color) {
+    var selectedLine = getSelectedLine();
+    if (selectedLine) selectedLine.color = color;
 }

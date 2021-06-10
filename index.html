@@ -25,13 +25,31 @@
             </canvas>
             </section>
             <section class="control-box">
-                <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
-                <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
-                <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
-                <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
-                <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
-                <img src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchSelectedLines()">
+                <section class="lines-managment">
+                    <img src="img/icons/lines-switch.png" onclick="onSwitchSelectedLines()">
+                    <img src="img/icons/add.png" onclick="onAddLine()">
+                    <img src="img/icons/trash.png" onclick="onDeleteLine()">
+                </section>
+                <section class="more-options">
+                    <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
+                    <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
+                    <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
+                    <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
+                    <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
+                    <section class="alignments-container">
+                        <img data-alignment="LEFT" src="img/icons/align-to-left.png" onclick="onChangeTextAlignment(this)" />
+                        <img data-alignment="CENTER" src="img/icons/center-text-alignment.png" onclick="onChangeTextAlignment(this)" />
+                        <img data-alignment="RIGHT" src="img/icons/align-to-right.png" onclick="onChangeTextAlignment(this)" />
+                    </section>
+                    <div class="color-pick">
+                        <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
+                    </div>
+                </section>
             </section>
+
+
+
+
 
         </main>
         <section class="images-gallery">
