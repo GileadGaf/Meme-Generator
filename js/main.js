@@ -6,8 +6,6 @@ function onInit() {
 
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
-
-
 }
 
 function resizeCanvas() {
@@ -18,7 +16,6 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight;
 
 }
-
 
 function loadImages() {
     var imgs = getImgs();
@@ -92,12 +89,15 @@ function addText() {
     //Filling the values of the control box inputs:
     var elLineText = document.querySelector('[name=line-text]');
     var elLineColor = document.querySelector('[name=color-picker]');
+    var elLineFont = document.querySelector('[name=select-font-family]');
     if (selectedLine) {
         elLineText.value = selectedLine.txt;
         elLineColor.value = selectedLine.color;
+        elLineFont.value = selectedLine.fontFamily;
     } else {
-        elLineText.value = '';
+        elLineText.value = 'Please add a new line';
         elLineColor.value = '#ffffff'
+        elLineFont.value = 'IMPACT';
     }
 
     memeLines.forEach((line, idx) => {
@@ -106,26 +106,26 @@ function addText() {
             pos = getLinePosIdxBased(idx);
         }
         saveLinePos(idx, pos);
-        drawText(line.txt, pos, line.align, line.color, line.size, idx);
+        drawText(line, pos, idx);
 
     });
 }
-// TODO: Take a look at the options that need to be done again
+// TODO: Add font family and stroke color
 
-function drawText(text, pos, alignment, color, fontSize, lineIdx) {
+function drawText(line, pos, lineIdx) {
 
 
     gCtx.beginPath();
     gCtx.moveTo(0, 0);
 
-    gCtx.fillStyle = color
+    gCtx.fillStyle = line.color
 
-    gCtx.font = fontSize + 'px ' + 'Impact';
+    gCtx.font = line.size + 'px ' + line.fontFamily.toLowerCase();
     gCtx.textAlign = "center";
     gCtx.textBaseline = "middle";
-    var rectHeight = fontSize + 10;
-    var rectWidth = gCtx.measureText(text).width;
-    var rectX = getAlignmentX(alignment);
+    var rectHeight = line.size + 10;
+    var rectWidth = gCtx.measureText(line.txt).width;
+    var rectX = getAlignmentX(line.align);
     var rectY = pos.y;
     if (lineIdx === gMeme.selectedLineIdx) {
         gCtx.lineWidth = 4;
@@ -134,8 +134,8 @@ function drawText(text, pos, alignment, color, fontSize, lineIdx) {
     }
     gCtx.strokeStyle = 'black';
     gCtx.lineWidth = 2;
-    gCtx.fillText(text, rectX + rectWidth / 2, rectY + rectHeight / 2);
-    gCtx.strokeText(text, rectX + rectWidth / 2, rectY + rectHeight / 2);
+    gCtx.fillText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
+    gCtx.strokeText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
     gCtx.closePath();
 
 }
@@ -202,6 +202,11 @@ function onDeleteLine() {
 function onChangeTextAlignment(elAlignButton) {
     var dataAlignment = elAlignButton.getAttribute('data-alignment');
     setLineAlignment(dataAlignment);
+    renderCanvas();
+}
+
+function onChangeFont(fontFamily) {
+    setFont(fontFamily);
     renderCanvas();
 }
 

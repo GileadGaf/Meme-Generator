@@ -24,7 +24,7 @@
         <main class="editor-box">
 
             <section class="canvas-container">
-                <canvas class="canvas" height="500" width="500" onmousedown="console.log(event)">
+                <canvas class="canvas" height="500" width="500">
 
             </canvas>
             </section>
@@ -45,16 +45,17 @@
                     <img data-alignment="LEFT" src="img/icons/align-to-left.png" onclick="onChangeTextAlignment(this)" />
                     <img data-alignment="CENTER" src="img/icons/center-text-alignment.png" onclick="onChangeTextAlignment(this)" />
                     <img data-alignment="RIGHT" src="img/icons/align-to-right.png" onclick="onChangeTextAlignment(this)" />
+                    <select name="select-font-family" onchange="onChangeFont(this.value)">
+                        <option value="IMPACT">Impact</option>
+                        <option value="POPPINS">Poppins</option>
+                        <option value="ARIAL">Arial</option>
+                    </select>
 
                     <div class="color-pick">
                         <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
                     </div>
                 </section>
             </section>
-
-
-
-
 
         </main>
         <section class="images-gallery">

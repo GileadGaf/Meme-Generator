@@ -1,7 +1,5 @@
 // var gWordCountMap = { 'happy': 1, 'funny puk': 1 }
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['happy'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['happy'] }
-];
+var gImgs = createImgs();
 var gMemes = [];
 var gMeme;
 //TODO: Create an array of gmemes
@@ -13,10 +11,28 @@ function createMeme(imgId) {
             txt: 'Enter text here',
             size: 32,
             align: 'CENTER',
+            fontFamily: 'IMPACT',
             color: '#ffffff',
             pos: null
+
         }]
     };
+}
+
+function createImg(id) {
+    return {
+        id,
+        url: 'img/memes/' + id + '.jpg'
+    };
+}
+
+function createImgs() {
+    var imgs = [];
+    for (var i = 1; i <= 10; i++) {
+        var newImg = createImg(i);
+        imgs.push(newImg);
+    }
+    return imgs;
 }
 
 function getNewMeme(imgId) {
@@ -50,6 +66,8 @@ function getMemeLines() {
 }
 
 function getSelectedLine() {
+    //After having an error I had to add this line
+    if (!gMeme) return;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) return null;
     var selectedLine = gMeme.lines[gMeme.selectedLineIdx];
     return selectedLine;
@@ -91,8 +109,9 @@ function switchSelectedLines() {
 function addLine() {
     var newLine = {
         txt: 'Enter text here',
-        size: 32,
+        size: 16,
         align: 'CENTER',
+        fontFamily: 'IMPACT',
         color: '#ffffff',
         pos: null
     }
@@ -109,6 +128,11 @@ function deleteLine() {
 function setLineAlignment(alignment) {
     var selectedLine = getSelectedLine();
     if (selectedLine) selectedLine.align = alignment
+}
+
+function setFont(fontFamily) {
+    var selectedLine = getSelectedLine();
+    if (selectedLine) selectedLine.fontFamily = fontFamily;
 }
 
 function setTextColor(color) {

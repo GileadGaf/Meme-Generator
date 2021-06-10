@@ -24,6 +24,7 @@ html {
 body {
     text-align: center;
     font-family: Poppins-medium;
+    background-color: #22252C;
 }
 
 footer {
@@ -51,7 +52,7 @@ footer {
     font-weight: normal;
     border-radius: 3rem;
     padding-inline-start: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 43px;
 }
 
 .main-header .nav-bar {
@@ -84,12 +85,14 @@ footer {
 }
 
 .images-gallery img {
-    width: 200px;
-    margin: 5px;
+    width: 17%;
+    margin: 12px;
+    border-radius: 10px;
 }
 
 .images-gallery img:hover {
     cursor: pointer;
+    opacity: 0.5;
 }
 
 
@@ -115,19 +118,15 @@ footer {
 
 .editor-box .control-box {
     display: flex;
-    align-items: flex-start;
+    line-height: 1.5;
+    padding: 10px;
+    font-family: Poppins-medium;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     border: 1px solid;
     background-color: #383B42;
     width: 526px;
-}
-
-.editor-box .control-box {
-    line-height: 1.5;
-    padding: 10px;
-    font-family: Poppins-medium;
 }
 
 .editor-box .control-box [name=line-text] {
@@ -152,10 +151,12 @@ footer {
     width: 30px;
     vertical-align: middle;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 .editor-box .control-box img:hover {
     cursor: pointer;
+    opacity: 0.75;
 }
 
 
@@ -176,13 +177,13 @@ footer {
 .more-options {
     background-color: #19A59F;
     width: 85%;
-    /* height: 100px; */
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
+    gap: 25px;
     flex-wrap: wrap;
     padding: 20px;
     margin: 27px 0;
+    border-radius: 5px;
 }
 
 .more-options * {
@@ -192,8 +193,8 @@ footer {
 }
 
 .more-options *:hover {
-    background-color: rgb(90, 89, 89);
     cursor: pointer;
+    opacity: 0.75;
 }
 
 .more-options .btn {
@@ -203,18 +204,19 @@ footer {
     height: 1.875rem;
 }
 
+.more-options select[name=select-font-family] {
+    width: 50%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
 .more-options .color-pick {
     background: url(../img/icons/paint-board-and-brush.png) no-repeat;
     background-color: #fff;
     background-size: contain;
     background-position: center;
-    font-size: 1rem;
     width: 30px;
     height: 1.875rem;
-}
-
-.more-options .color-pick:hover {
-    background-color: rgb(90, 89, 89);
 }
 
 .control-box .color-pick input[name=color-picker] {
