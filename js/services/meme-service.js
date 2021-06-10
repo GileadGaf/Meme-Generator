@@ -1,32 +1,37 @@
-var gKeywords = { 'happy': 1, 'funny puk': 1 }
+// var gWordCountMap = { 'happy': 1, 'funny puk': 1 }
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['happy'] },
     { id: 2, url: 'img/2.jpg', keywords: ['happy'] }
 ];
-var gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [{
-            txt: 'I never eat Falafel',
+var gMemes = [];
+var gMeme;
+//TODO: Create an array of gmemes
+function createMeme(imgId) {
+    return {
+        selectedImgId: imgId,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: 'Enter text here',
             size: 32,
             align: 'CENTER',
             color: '#ffffff',
             pos: null
-        },
-        {
-            txt: 'I always eat Falafel',
-            size: 32,
-            align: 'CENTER',
-            color: '#ffffff',
-            pos: null
-        }
-    ]
+        }]
+    };
 }
 
-var gDiff = 1;
+function getNewMeme(imgId) {
+    var newMeme = createMeme(imgId);
+    gMemes.push(newMeme);
+    return newMeme;
 
-function getMeme() {
-    return gMeme;
 }
+
+function setMeme(imgId) {
+    var selectedMeme = gMemes.find(meme => meme.selectedImgId === imgId);
+    if (!selectedMeme) selectedMeme = getNewMeme(imgId);
+    gMeme = selectedMeme;
+}
+
 
 function getImgs() {
     return gImgs;
@@ -37,6 +42,8 @@ function getMemeImage() {
     return selectedImg;
 
 }
+
+
 
 function getMemeLines() {
     return gMeme.lines;

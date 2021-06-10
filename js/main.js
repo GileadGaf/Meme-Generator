@@ -32,10 +32,11 @@ function loadImages() {
 
 function imgClicked(imgId) {
     document.querySelector('.editor-box').classList.add('flex');
+    var elGalleryNav = document.querySelector('.gallery-nav');
+    elGalleryNav.classList.remove('active');
     resizeCanvas();
-    var meme = getMeme();
-    meme.selectedImgId = imgId;
-    editMeme();
+    setMeme(imgId);
+    updateMemeContent();
 
     document.querySelector('.images-gallery').style.display = 'none';
 
@@ -44,10 +45,12 @@ function imgClicked(imgId) {
 
 function backToGallery() {
     document.querySelector('.editor-box').classList.remove('flex');
+    var elGalleryNav = document.querySelector('.gallery-nav');
+    elGalleryNav.classList.add('active');
     document.querySelector('.images-gallery').style.display = 'block';
 }
 
-function editMeme() {
+function updateMemeContent() {
     var selectedImg = getMemeImage();
     var img = new Image();
 
@@ -87,10 +90,16 @@ function addText() {
     var memeLines = getMemeLines();
     var selectedLine = getSelectedLine();
     //Filling the values of the control box inputs:
+    var elLineText = document.querySelector('[name=line-text]');
+    var elLineColor = document.querySelector('[name=color-picker]');
     if (selectedLine) {
-        document.querySelector('[name=canvas-text]').value = selectedLine.txt;
-        document.querySelector('[name=color-picker]').value = selectedLine.color;
+        elLineText.value = selectedLine.txt;
+        elLineColor.value = selectedLine.color;
+    } else {
+        elLineText.value = '';
+        elLineColor.value = '#ffffff'
     }
+
     memeLines.forEach((line, idx) => {
         var pos = line.pos;
         if (!pos) {

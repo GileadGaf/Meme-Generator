@@ -5,6 +5,11 @@
     src: url(../fonts/impact.ttf);
 }
 
+@font-face {
+    font-family: Poppins-medium;
+    src: url(../fonts/Poppins-Medium.ttf);
+}
+
 
 /* BASE */
 
@@ -18,6 +23,7 @@ html {
 
 body {
     text-align: center;
+    font-family: Poppins-medium;
 }
 
 footer {
@@ -29,6 +35,45 @@ footer {
 
 .canvas {
     background-color: aquamarine;
+}
+
+
+/* HEADER */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    background: linear-gradient(to right, #14A0AA, #2EB976);
+    font-size: 0.7rem;
+    font-weight: normal;
+    border-radius: 3rem;
+    padding-inline-start: 1rem;
+    margin-bottom: 10px;
+}
+
+.main-header .nav-bar {
+    display: flex;
+    width: 500px;
+    font-size: 1rem;
+}
+
+.main-header .nav-bar .gallery-nav {
+    width: 117px;
+    padding: 5px 1.5rem;
+    border-radius: 3rem;
+}
+
+.main-header .nav-bar .gallery-nav:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main-header .nav-bar .gallery-nav.active {
+    background-color: #fff;
+    color: #21AC91;
 }
 
 
@@ -61,48 +106,115 @@ footer {
     align-items: center;
 }
 
-.editor-box .btn {
-    font-size: 1rem;
-    border: 1px solid #222;
-    background-color: #fff;
-}
-
-.editor-box .btn:hover {
-    background-color: rgb(180, 176, 176);
-    cursor: pointer;
-}
-
 
 /*  CONTROL BOX */
+
+.editor-box {
+    justify-content: space-around;
+}
 
 .editor-box .control-box {
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
+    border: 1px solid;
+    background-color: #383B42;
+    width: 526px;
 }
 
-.editor-box .control-box * {
+.editor-box .control-box {
     line-height: 1.5;
-    margin: 5px;
+    padding: 10px;
+    font-family: Poppins-medium;
+}
+
+.editor-box .control-box [name=line-text] {
+    margin: 20px;
+    padding: 0.5rem;
+    /* width: 90%; */
+    border-radius: 3rem;
+    text-align: center;
+    font-size: 1.1875rem;
 }
 
 .editor-box .control-box .lines-managment {
     width: 100%;
 }
 
+.editor-box .control-box .lines-managment img {
+    width: 30px;
+    padding: 3px;
+}
+
 .editor-box .control-box img {
     width: 30px;
     vertical-align: middle;
+    border-radius: 5px;
 }
 
 .editor-box .control-box img:hover {
     cursor: pointer;
 }
 
-.control-box .color-pick {
-    background: url(../img/icons/paint-board-and-brush.png) no-repeat;
-    background-size: cover;
+
+/*COLORS OF THE ICONS */
+
+.control-box .lines-switch {
+    background-color: #4CB7D2;
+}
+
+.control-box .add {
+    background-color: #3ED455;
+}
+
+.control-box .trash {
+    background-color: #D62837;
+}
+
+.more-options {
+    background-color: #19A59F;
+    width: 85%;
+    /* height: 100px; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 27px 0;
+}
+
+.more-options * {
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+
+.more-options *:hover {
+    background-color: rgb(90, 89, 89);
+    cursor: pointer;
+}
+
+.more-options .btn {
+    font-size: 1.1rem;
+    padding: 1px;
     width: 30px;
+    height: 1.875rem;
+}
+
+.more-options .color-pick {
+    background: url(../img/icons/paint-board-and-brush.png) no-repeat;
+    background-color: #fff;
+    background-size: contain;
+    background-position: center;
+    font-size: 1rem;
+    width: 30px;
+    height: 1.875rem;
+}
+
+.more-options .color-pick:hover {
+    background-color: rgb(90, 89, 89);
 }
 
 .control-box .color-pick input[name=color-picker] {
@@ -115,6 +227,12 @@ footer {
 
 .flex {
     display: flex;
+}
+
+.clear-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 
@@ -132,8 +250,5 @@ footer {
     }
     .control-box {
         width: 100%;
-    }
-    .topbar {
-        display: none;
     }
 }

@@ -11,36 +11,41 @@
 
 <body onload="onInit()">
     <section class="main-container">
-        <header>
-            <h1>My Meme Generator</h1>
+        <header class="main-header">
+            <div class="logo">
+                <h1>My meme Generator</h1>
+            </div>
+            <ul class="nav-bar clear-list ">
+                <li>
+                    <a class="gallery-nav active" onclick="backToGallery()">Gallery </a>
+                </li>
+            </ul>
         </header>
         <main class="editor-box">
-            <header class="topbar">
-                <h2>Edit Meme</h2>
-                <button class="back-gallery btn" onclick="backToGallery()">Gallery➡</button>
-            </header>
+
             <section class="canvas-container">
                 <canvas class="canvas" height="500" width="500" onmousedown="console.log(event)">
 
             </canvas>
             </section>
             <section class="control-box">
+                <input name="line-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
                 <section class="lines-managment">
-                    <img src="img/icons/lines-switch.png" onclick="onSwitchSelectedLines()">
-                    <img src="img/icons/add.png" onclick="onAddLine()">
-                    <img src="img/icons/trash.png" onclick="onDeleteLine()">
+                    <img class="lines-switch" src="img/icons/lines-switch.png" onclick="onSwitchSelectedLines()">
+                    <img class="add" src="img/icons/add.png" onclick="onAddLine()">
+                    <img class="trash" src="img/icons/trash.png" onclick="onDeleteLine()">
                 </section>
                 <section class="more-options">
-                    <button class="btn" onclick="onChangeTextPos(-10)">Move line up</button>
-                    <button class="btn" onclick="onChangeTextPos(10)">Move line down</button>
-                    <input name="canvas-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
+                    <button class="btn" onclick="onChangeTextPos(-10)">⬆</button>
+                    <button class="btn" onclick="onChangeTextPos(10)">⬇</button>
+
                     <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
                     <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
-                    <section class="alignments-container">
-                        <img data-alignment="LEFT" src="img/icons/align-to-left.png" onclick="onChangeTextAlignment(this)" />
-                        <img data-alignment="CENTER" src="img/icons/center-text-alignment.png" onclick="onChangeTextAlignment(this)" />
-                        <img data-alignment="RIGHT" src="img/icons/align-to-right.png" onclick="onChangeTextAlignment(this)" />
-                    </section>
+
+                    <img data-alignment="LEFT" src="img/icons/align-to-left.png" onclick="onChangeTextAlignment(this)" />
+                    <img data-alignment="CENTER" src="img/icons/center-text-alignment.png" onclick="onChangeTextAlignment(this)" />
+                    <img data-alignment="RIGHT" src="img/icons/align-to-right.png" onclick="onChangeTextAlignment(this)" />
+
                     <div class="color-pick">
                         <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
                     </div>
@@ -58,6 +63,7 @@
             <!-- <h3>Coffee Rights Gilead Gafni</h3> -->
         </footer>
     </section>
+    <script src="js/services/canvas-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>
