@@ -42,6 +42,7 @@
                         <img class="trash" src="img/icons/trash.png" onclick="onDeleteLine()">
                     </section>
                 </div>
+                <!-- Pops up when keyboard is opened on mobile -->
                 <section class="more-options">
                     <button class="btn" onclick="onChangeTextPos(-10)">⬆</button>
                     <button class="btn" onclick="onChangeTextPos(10)">⬇</button>
@@ -62,6 +63,20 @@
                         <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
                     </div>
                 </section>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <section class="share-and-download-container">
+                        <div class="share-btn btn">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="share-title" type="submit">
+                            <img src="img/icons/share.png" alt="share"/>
+                           Share</button>
+                        </div>
+                        <div class="download-btn btn" onclick="downloadCanvas(this)">
+                            <img src="img/icons/download.png" alt="download" />
+                            <a class="download-title">Download</a>
+                        </div>
+                    </section>
+                </form>
             </section>
 
         </main>
@@ -71,8 +86,9 @@
             <!-- <h3>Coffee Rights Gilead Gafni</h3> -->
         </footer>
     </section>
-    <script src="js/services/canvas-service.js"></script>
     <script src="js/services/meme-service.js"></script>
+    <script src="js/services/upload-service.js"></script>
+    <script src="js/services/canvas-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

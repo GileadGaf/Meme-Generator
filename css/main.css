@@ -165,14 +165,14 @@ footer {
     padding: 3px;
 }
 
-.editor-box .control-box img {
+.control-box img {
     width: 30px;
     vertical-align: middle;
     border-radius: 5px;
     font-size: 1rem;
 }
 
-.editor-box .control-box img:hover {
+.control-box img:hover {
     cursor: pointer;
     opacity: 0.75;
 }
@@ -243,6 +243,58 @@ footer {
 }
 
 
+/*SHARE AND DOWNLOAD */
+
+.share-and-download-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.share-and-download-container .btn {
+    color: white;
+    flex: 1;
+    font-size: 1.06rem;
+    border-radius: 1rem;
+    width: 214px;
+    padding: 15px 0 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.share-and-download-container .btn:hover {
+    opacity: 0.7;
+}
+
+.share-and-download-container .btn img {
+    width: 24px;
+    margin-right: 1rem;
+}
+
+.share-btn {
+    background-color: #1E7CD3;
+}
+
+.download-btn {
+    background-color: #8F44BB;
+}
+
+.download-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.share-btn button {
+    background-color: #1E7CD3;
+    border: none;
+    color: white;
+    font-size: 1.06rem;
+    cursor: pointer;
+}
+
+
 /* HELPERS */
 
 .flex {
@@ -288,6 +340,8 @@ footer {
     .editor-box {
         flex-direction: column;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
     }
     .canvas-container {
         background-color: #fff;
@@ -351,6 +405,12 @@ footer {
         gap: 10px;
     }
     /* EDITOR  */
+    .editor-box .control-box {
+        flex: 1;
+    }
+    .editor-box .control-box .main-options {
+        flex: 1;
+    }
     .editor-box .control-box [name=line-text] {
         font-size: 0.8rem;
     }

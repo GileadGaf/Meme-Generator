@@ -223,6 +223,14 @@ function onChangeTextColor(color) {
     renderCanvas();
 }
 
+
+function downloadCanvas(elButton) {
+    const data = gElCanvas.toDataURL()
+    var elLink = elButton.querySelector('a');
+    elLink.href = data
+    elLink.download = 'my-meme.jpg'
+}
+
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
