@@ -7,15 +7,7 @@ function createMeme(imgId) {
     return {
         selectedImgId: imgId,
         selectedLineIdx: 0,
-        lines: [{
-            txt: 'Enter text here',
-            size: 32,
-            align: 'CENTER',
-            fontFamily: 'IMPACT',
-            color: '#ffffff',
-            pos: null
-
-        }]
+        lines: [addLine()]
     };
 }
 
@@ -28,7 +20,7 @@ function createImg(id) {
 
 function createImgs() {
     var imgs = [];
-    for (var i = 1; i <= 10; i++) {
+    for (var i = 1; i <= 18; i++) {
         var newImg = createImg(i);
         imgs.push(newImg);
     }
@@ -108,15 +100,18 @@ function switchSelectedLines() {
 
 function addLine() {
     var newLine = {
-        txt: 'Enter text here',
-        size: 16,
+        txt: 'Text',
+        size: 32,
         align: 'CENTER',
         fontFamily: 'IMPACT',
         color: '#ffffff',
         pos: null
     }
-    gMeme.lines.push(newLine);
-    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    if (gMeme) {
+        gMeme.lines.push(newLine);
+        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    }
+    return newLine;
 }
 
 function deleteLine() {

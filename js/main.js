@@ -6,6 +6,11 @@ function onInit() {
 
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
+    // window.addEventListener('resize', function(ev) {
+    //     resizeCanvas();
+    //     updateMemeContent();
+
+    // });
 }
 
 function resizeCanvas() {
@@ -14,8 +19,8 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.offsetWidth;
 
     gElCanvas.height = elContainer.offsetHeight;
-
 }
+
 
 function loadImages() {
     var imgs = getImgs();
@@ -35,7 +40,9 @@ function imgClicked(imgId) {
     setMeme(imgId);
     updateMemeContent();
 
-    document.querySelector('.images-gallery').style.display = 'none';
+    var elGallery = document.querySelector('.images-gallery');
+    elGallery.hidden = true;
+    elGallery.classList.remove('grid');
 
 
 }
@@ -44,7 +51,7 @@ function backToGallery() {
     document.querySelector('.editor-box').classList.remove('flex');
     var elGalleryNav = document.querySelector('.gallery-nav');
     elGalleryNav.classList.add('active');
-    document.querySelector('.images-gallery').style.display = 'block';
+    document.querySelector('.images-gallery').classList.add('grid');
 }
 
 function updateMemeContent() {
@@ -68,7 +75,7 @@ function drawImage() {
 }
 
 function onChangeCanvasText(canvasText) {
-    if (!canvasText) return;
+
     changeCanvasText(canvasText);
     renderCanvas();
 
@@ -121,6 +128,7 @@ function drawText(line, pos, lineIdx) {
     gCtx.fillStyle = line.color
 
     gCtx.font = line.size + 'px ' + line.fontFamily.toLowerCase();
+    gCtx.font += ', Haettenschweiler, Arial Narrow Bold, sans-serif';
     gCtx.textAlign = "center";
     gCtx.textBaseline = "middle";
     var rectHeight = line.size + 10;
@@ -132,11 +140,11 @@ function drawText(line, pos, lineIdx) {
         gCtx.strokeStyle = 'white';
         gCtx.strokeRect(rectX - 10, rectY, rectWidth + 20, rectHeight);
     }
+    gCtx.closePath();
     gCtx.strokeStyle = 'black';
     gCtx.lineWidth = 2;
     gCtx.fillText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
     gCtx.strokeText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
-    gCtx.closePath();
 
 }
 
@@ -213,4 +221,8 @@ function onChangeFont(fontFamily) {
 function onChangeTextColor(color) {
     setTextColor(color);
     renderCanvas();
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 }

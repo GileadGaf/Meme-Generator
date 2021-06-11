@@ -13,13 +13,18 @@
     <section class="main-container">
         <header class="main-header">
             <div class="logo">
-                <h1>My meme Generator</h1>
+                <h1>Logo</h1>
             </div>
+
             <ul class="nav-bar clear-list ">
+                <li class="menu-close">
+                    <button onclick="toggleMenu()">✖</button>
+                </li>
                 <li>
                     <a class="gallery-nav active" onclick="backToGallery()">Gallery </a>
                 </li>
             </ul>
+            <img src="img/icons/hamburger.png" class="menu-burger" alt="" onclick="toggleMenu()">
         </header>
         <main class="editor-box">
 
@@ -29,12 +34,14 @@
             </canvas>
             </section>
             <section class="control-box">
-                <input name="line-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
-                <section class="lines-managment">
-                    <img class="lines-switch" src="img/icons/lines-switch.png" onclick="onSwitchSelectedLines()">
-                    <img class="add" src="img/icons/add.png" onclick="onAddLine()">
-                    <img class="trash" src="img/icons/trash.png" onclick="onDeleteLine()">
-                </section>
+                <div class="main-options">
+                    <input name="line-text" type="text" placeholder="Enter text here" oninput="onChangeCanvasText(this.value)" />
+                    <section class="lines-managment">
+                        <img class="lines-switch" src="img/icons/lines-switch.png" onclick="onSwitchSelectedLines()">
+                        <img class="add" src="img/icons/add.png" onclick="onAddLine()">
+                        <img class="trash" src="img/icons/trash.png" onclick="onDeleteLine()">
+                    </section>
+                </div>
                 <section class="more-options">
                     <button class="btn" onclick="onChangeTextPos(-10)">⬆</button>
                     <button class="btn" onclick="onChangeTextPos(10)">⬇</button>
@@ -58,7 +65,7 @@
             </section>
 
         </main>
-        <section class="images-gallery">
+        <section class="images-gallery grid">
         </section>
         <footer>
             <!-- <h3>Coffee Rights Gilead Gafni</h3> -->
