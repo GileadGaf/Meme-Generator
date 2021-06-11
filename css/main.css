@@ -407,9 +407,11 @@ footer {
     /* EDITOR  */
     .editor-box .control-box {
         flex: 1;
+        position: relative;
     }
     .editor-box .control-box .main-options {
         flex: 1;
+        /* position: absolute; */
     }
     .editor-box .control-box [name=line-text] {
         font-size: 0.8rem;

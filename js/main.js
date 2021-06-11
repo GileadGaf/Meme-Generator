@@ -6,11 +6,7 @@ function onInit() {
 
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
-    // window.addEventListener('resize', function(ev) {
-    //     resizeCanvas();
-    //     updateMemeContent();
-
-    // });
+    addListeners();
 }
 
 function resizeCanvas() {
@@ -117,28 +113,29 @@ function addText() {
 
     });
 }
-// TODO: Add font family and stroke color
+// TODO: Add  stroke color
 
 function drawText(line, pos, lineIdx) {
 
 
     gCtx.beginPath();
-    gCtx.moveTo(0, 0);
 
-    gCtx.fillStyle = line.color
+    gCtx.fillStyle = line.color;
 
     gCtx.font = line.size + 'px ' + line.fontFamily.toLowerCase();
     gCtx.font += ', Haettenschweiler, Arial Narrow Bold, sans-serif';
     gCtx.textAlign = "center";
     gCtx.textBaseline = "middle";
     var rectHeight = line.size + 10;
-    var rectWidth = gCtx.measureText(line.txt).width;
-    var rectX = getAlignmentX(line.align);
+    var rectWidth = gCtx.measureText(line.txt).width + 20;
+    var rectX = pos.x;
+    //check later if not needed;
+    // var rectX = (line.isDrag) ? pos.x : getAlignmentX(line.align);
     var rectY = pos.y;
     if (lineIdx === gMeme.selectedLineIdx) {
         gCtx.lineWidth = 4;
         gCtx.strokeStyle = 'white';
-        gCtx.strokeRect(rectX - 10, rectY, rectWidth + 20, rectHeight);
+        gCtx.strokeRect(rectX, rectY, rectWidth, rectHeight);
     }
     gCtx.closePath();
     gCtx.strokeStyle = 'black';
@@ -233,4 +230,10 @@ function downloadCanvas(elButton) {
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
+}
+
+function onTouchCanvas(ev) {
+    var { offsetX, offsetY } = ev;
+    var pos = { x: offsetX, y: offsetY };
+    isTextClicked(pos);
 }

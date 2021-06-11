@@ -105,7 +105,8 @@ function addLine() {
         align: 'CENTER',
         fontFamily: 'IMPACT',
         color: '#ffffff',
-        pos: null
+        pos: null,
+        isDrag: false
     }
     if (gMeme) {
         gMeme.lines.push(newLine);
