@@ -1,6 +1,7 @@
 function onInit() {
     loadImages();
     initCanvas();
+    window.addEventListener('resize', resizeCanvas);
 }
 
 function resizeCanvas() {
@@ -59,10 +60,12 @@ function addText() {
     //Filling the values of the control box inputs:
     var elLineText = document.querySelector('[name=line-text]');
     var elLineColor = document.querySelector('[name=color-picker]');
+    var elLineStrokeColor = document.querySelector('[name=text-color-picker]');
     var elLineFont = document.querySelector('[name=select-font-family]');
     if (selectedLine) {
         elLineText.value = selectedLine.txt;
         elLineColor.value = selectedLine.color;
+        elLineStrokeColor.value = selectedLine.strokeColor;
         elLineFont.value = selectedLine.fontFamily;
 
     } else {
@@ -83,10 +86,6 @@ function addText() {
 
     });
 }
-// TODO: Add  stroke color
-//TODO: Fix mobile design
-//TODO: Add alignment again
-
 
 function onChangeFontSize(diff) {
     changeFontSize(diff);
@@ -127,6 +126,11 @@ function onChangeFont(fontFamily) {
 
 function onChangeTextColor(color) {
     setTextColor(color);
+    renderCanvas();
+}
+
+function onChangeTextStrokeColor(strokeColor) {
+    setTextStrokeColor(strokeColor);
     renderCanvas();
 }
 

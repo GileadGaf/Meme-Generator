@@ -123,6 +123,7 @@ function addLine() {
         size: 32,
         fontFamily: 'IMPACT',
         color: '#ffffff',
+        strokeColor: '#292929',
         pos: null,
         width: 0,
         isDrag: false
@@ -150,4 +151,9 @@ function setFont(fontFamily) {
 function setTextColor(color) {
     var selectedLine = getSelectedLine();
     if (selectedLine) selectedLine.color = color;
+}
+
+function setTextStrokeColor(strokeColor) {
+    var selectedLine = getSelectedLine();
+    if (selectedLine) selectedLine.strokeColor = strokeColor;
 }

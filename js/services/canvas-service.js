@@ -45,7 +45,7 @@ function drawText(line, pos, lineIdx) {
     }
     gCtx.setLineDash([0]);
     gCtx.closePath();
-    gCtx.strokeStyle = 'black';
+    gCtx.strokeStyle = line.strokeColor;
     gCtx.fillStyle = line.color;
     gCtx.lineWidth = 2;
     gCtx.fillText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);

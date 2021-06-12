@@ -54,6 +54,10 @@
                         <option value="ARIAL">Arial</option>
                     </select>
 
+                    <div class="text-color-pick">
+                        <input name="text-color-picker" type="color" oninput="onChangeTextStrokeColor(this.value)" />
+                    </div>
+
                     <div class="color-pick">
                         <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
                     </div>
@@ -67,8 +71,9 @@
                            Share</button>
                         </div>
                         <div class="download-btn btn" onclick="downloadCanvas(this)">
-                            <img src="img/icons/download.png" alt="download" />
-                            <a class="download-title">Download</a>
+                            <a class="download-title">
+                                <img src="img/icons/download.png" alt="download" /> Download
+                            </a>
                         </div>
                     </section>
                 </form>
