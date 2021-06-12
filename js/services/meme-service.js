@@ -2,12 +2,13 @@
 var gImgs = createImgs();
 var gMemes = [];
 var gMeme;
+var gMemeImg;
 //TODO: Create an array of gmemes
 function createMeme(imgId) {
     return {
         selectedImgId: imgId,
         selectedLineIdx: 0,
-        lines: [addLine()]
+        lines: []
     };
 }
 
@@ -38,18 +39,26 @@ function setMeme(imgId) {
     var selectedMeme = gMemes.find(meme => meme.selectedImgId === imgId);
     if (!selectedMeme) selectedMeme = getNewMeme(imgId);
     gMeme = selectedMeme;
+    if (!gMeme.lines.length) addLine();
+    gMemeImg = _getMemeImg();
 }
-
 
 function getImgs() {
     return gImgs;
 }
 
-function getMemeImage() {
+
+// Assigning gMemeImg
+function _getMemeImg() {
     var selectedImg = gImgs.find(img => img.id === gMeme.selectedImgId);
     return selectedImg;
-
 }
+
+//Controller will be using this function to get the img props
+function getImg() {
+    return gMemeImg;
+}
+
 
 
 
@@ -58,7 +67,6 @@ function getMemeLines() {
 }
 
 function getSelectedLine() {
-    //After having an error I had to add this line
     if (!gMeme) return;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) return null;
     var selectedLine = gMeme.lines[gMeme.selectedLineIdx];
@@ -73,10 +81,16 @@ function saveLinePos(idx, pos) {
 
 }
 
+function setLineWidth(idx, width) {
+    var line = gMeme.lines[idx];
+    line.width = width;
+}
+
 function changeCanvasText(canvasText) {
     var selectedLine = getSelectedLine();
     if (selectedLine) selectedLine.txt = canvasText;
 }
+
 
 function changeFontSize(diff) {
     var selectedLine = getSelectedLine();
@@ -91,40 +105,42 @@ function changeTextVerticalPos(yDelta) {
 
 function switchSelectedLines() {
     var newIdx = gMeme.selectedLineIdx + 1
-    if (newIdx < 0) {
+    if (newIdx === 0) {
         newIdx = gMeme.lines.length - 1;
-    } else
-    if (newIdx === gMeme.lines.length) newIdx = 0;
-    gMeme.selectedLineIdx = newIdx;
+    } else if (newIdx === gMeme.lines.length) {
+        newIdx = 0;
+    }
+    selectLine(newIdx);
+}
+
+function selectLine(idx) {
+    gMeme.selectedLineIdx = idx;
 }
 
 function addLine() {
     var newLine = {
-        txt: 'Text',
+        txt: '',
         size: 32,
-        align: 'CENTER',
         fontFamily: 'IMPACT',
         color: '#ffffff',
         pos: null,
+        width: 0,
         isDrag: false
     }
     if (gMeme) {
         gMeme.lines.push(newLine);
-        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+        selectLine(gMeme.lines.length - 1);
     }
-    return newLine;
+
 }
 
 function deleteLine() {
     var lineIdx = gMeme.selectedLineIdx;
     gMeme.lines.splice(lineIdx, 1);
-    gMeme.selectedLineIdx = 0;
+    if (lineIdx > 0) selectLine(lineIdx - 1);
+    else selectLine(0);
 }
 
-function setLineAlignment(alignment) {
-    var selectedLine = getSelectedLine();
-    if (selectedLine) selectedLine.align = alignment
-}
 
 function setFont(fontFamily) {
     var selectedLine = getSelectedLine();

@@ -25,17 +25,7 @@ body {
     text-align: center;
     font-family: Poppins-medium;
     background-color: #22252C;
-}
-
-footer {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.canvas {
-    background-color: aquamarine;
+    color: #fff;
 }
 
 
@@ -92,8 +82,7 @@ footer {
 /* Images Gallery */
 
 .images-gallery {
-    height: 100vh;
-    /* gap: 20px; */
+    height: 90vh;
 }
 
 .images-gallery.grid {
@@ -141,8 +130,6 @@ footer {
     flex-wrap: wrap;
     border: 1px solid;
     background-color: #383B42;
-    /* width: 526px; */
-    /* width: 50%; */
 }
 
 .editor-box .control-box [name=line-text] {
