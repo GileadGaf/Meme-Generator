@@ -12,6 +12,8 @@ function createMeme(imgId) {
     };
 }
 
+
+
 function createImg(id) {
     return {
         id,
@@ -41,6 +43,15 @@ function setMeme(imgId) {
     gMeme = selectedMeme;
     if (!gMeme.lines.length) addLine();
     gMemeImg = _getMemeImg();
+}
+
+function clearMeme() {
+    gMeme = null;
+    gMemeImg = null;
+}
+
+function isMemeEditActive() {
+    return gMeme != null && gMemeImg != null;
 }
 
 function getImgs() {

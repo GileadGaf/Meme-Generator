@@ -5,12 +5,7 @@
 /*  FONTS */
 
 @font-face {
-    font-family: Impact;
-    src: url(../fonts/impact.ttf);
-}
-
-@font-face {
-    font-family: Poppins-medium;
+    font-family: Poppins;
     src: url(../fonts/Poppins-Medium.ttf);
 }
 
@@ -27,7 +22,7 @@ html {
 
 body {
     text-align: center;
-    font-family: Poppins-medium;
+    font-family: Poppins;
     background-color: #22252C;
     color: #fff;
 }
@@ -47,4 +42,13 @@ body {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+.object-fit-contain {
+    object-fit: contain;
+}
+
+.icon30 {
+    height: 30px;
+    width: 30px;
 }

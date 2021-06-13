@@ -13,12 +13,12 @@
     }
     
     .canvas-container .canvas {
-        border-radius: 3rem;
+        border-radius: 1rem;
     }
     
     .editor-box .control-box {
         display: flex;
-        padding: 10px;
+        padding: 10px 12px;
         flex-direction: column;
         flex-wrap: wrap;
         border: 1px solid;
@@ -42,8 +42,9 @@
     
     .editor-box .control-box .lines-managment img {
         width: 55px;
-        padding: 17px;
-        margin-inline-start: 10px;
+        padding: 15px;
+        margin: 5px 18px;
+        border-radius: 15px;
     }
     
     .control-box img {
@@ -86,7 +87,8 @@
     .more-options * {
         background-color: #fff;
         border: 1px solid #222;
-        border-radius: 5px;
+        border-radius: 10px;
+        padding: 2px;
     }
     
     .more-options *:hover {
@@ -96,24 +98,31 @@
     
     .more-options .btn {
         font-size: 1.1rem;
-        padding: 1px;
+        padding: 3px;
         width: 30px;
         height: 1.875rem;
     }
     
     .more-options select[name=select-font-family] {
         width: 50%;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         text-transform: uppercase;
     }
     
-    .more-options .text-color-pick {
-        background: url(../../img/icons/text-stroke.png) no-repeat;
-        background-color: #fff;
-        background-size: contain;
-        background-position: center;
+    .more-options label>[type="color"] label {
+        position: relative;
         width: 30px;
-        height: 1.875rem;
+    }
+    
+    .more-options .text-color-pick {
+        position: relative;
+        width: 30px;
+    }
+    
+    .text-color-pick img {
+        position: absolute;
+        left: 0%;
+        top: 0;
     }
     
     .control-box .text-color-pick input[name=text-color-picker] {
@@ -122,15 +131,17 @@
     }
     
     .more-options .color-pick {
-        background: url(../../img/icons/paint-board-and-brush.png) no-repeat;
-        background-color: #fff;
-        background-size: contain;
-        background-position: center;
+        position: relative;
         width: 30px;
-        height: 1.875rem;
     }
     
-    .control-box .color-pick input[name=color-picker] {
+    .color-pick img {
+        position: absolute;
+        left: 0%;
+        top: 0;
+    }
+    
+    .color-pick input[name=color-picker] {
         cursor: pointer;
         opacity: 0;
     }
@@ -147,7 +158,7 @@
         flex: 1;
         font-size: 0.8125rem;
         border-radius: 1rem;
-        width: 200px;
+        width: 190px;
         padding: 15px 0 10px;
         cursor: pointer;
     }
@@ -163,12 +174,12 @@
     
     .share-btn {
         background-color: #1E7CD3;
-        margin-right: 5px;
+        margin-right: 10px;
     }
     
     .download-btn {
         background-color: #8F44BB;
-        margin-left: 5px;
+        margin-left: 10px;
     }
     
     .download-btn a {
@@ -188,6 +199,15 @@
         .editor-box {
             flex-direction: column;
             align-items: center;
+            margin: 0;
+            gap: 10px;
+        }
+        .editor-box .control-box [name=line-text] {
+            margin: 0 0 10px;
+        }
+        .editor-box .control-box .more-options {
+            gap: 20px;
+            margin: 15px 0;
         }
     }
     
@@ -201,8 +221,21 @@
             width: 100%;
             margin: 20px 0;
         }
+        .editor-box .control-box [name=line-text] {
+            margin: 10px;
+        }
+        .control-box .more-options {
+            gap: 15px;
+            margin: 10px 0;
+        }
         .control-box .more-options select[name=select-font-family] {
             width: 33%;
+        }
+        .editor-box .control-box .lines-managment img {
+            width: 25px;
+            padding: 5px;
+            margin-inline-start: 18px;
+            border-radius: 30%;
         }
     }
     
@@ -220,10 +253,14 @@
             font-size: 0.8rem;
             margin: 0px 0 5px;
         }
+        .editor-box .control-box .lines-managment img {
+            width: 25px;
+            padding: 5px;
+            margin-inline-start: 18px;
+            border-radius: 30%;
+        }
         .editor-box .control-box .more-options {
             margin: 10px 0;
-        }
-        .share-and-download-container .btn {
-            width: 150px;
+            padding: 10px 20px;
         }
     }

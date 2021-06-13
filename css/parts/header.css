@@ -1,4 +1,4 @@
-.main-header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,58 +8,70 @@
     font-size: 0.7rem;
     font-weight: normal;
     border-radius: 3rem;
-    padding-inline-start: 8.25rem;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
-.main-header .logo {
+header .logo {
     text-transform: uppercase;
+    font-size: 1rem;
+    flex: 2
 }
 
-.main-header .nav-bar {
+header .nav-bar {
     width: 500px;
     font-size: 1rem;
+    flex: 1;
 }
 
-.main-header .nav-bar>li.menu-close {
+header .nav-bar>li.menu-close {
     display: none;
 }
 
-.main-header .nav-bar .gallery-nav {
+header .nav-bar .gallery-nav {
     width: 117px;
     padding: 5px 1.5rem;
     border-radius: 3rem;
 }
 
-.main-header .nav-bar .gallery-nav:hover {
+header .nav-bar .gallery-nav:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.main-header .nav-bar .gallery-nav.active {
+header .nav-bar .gallery-nav.active {
     background-color: #fff;
     color: #21AC91;
 }
 
-.main-header .menu-burger {
+header .menu-burger {
     display: none;
+}
+
+@media (max-width:1150px) {
+    /* HEADER */
+    header {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 800px) {
     /* HEADER */
-    .main-header .nav-bar {
+    header {
+        margin-bottom: 10px;
+    }
+    header .nav-bar {
         display: flex;
     }
 }
 
 @media (max-width: 500px) {
     /* HEADER */
-    .main-header {
+    header {
         font-size: 1rem;
         padding: 0 1rem;
     }
     /* NAV-BAR */
-    .main-header .nav-bar {
+    header .nav-bar {
         height: 100vh;
         width: 50%;
         background: linear-gradient(to bottom, #14A0AA, #2EB976);
@@ -73,14 +85,14 @@
         transition: transform .6s;
         z-index: 10;
     }
-    .main-header .menu-burger {
+    header .menu-burger {
         display: inline;
         cursor: pointer;
     }
     body.menu-open .nav-bar {
         transform: translateX(0);
     }
-    .main-header .nav-bar>li.menu-close {
+    header .nav-bar>li.menu-close {
         display: flex;
         align-items: flex-end;
         margin-top: 10px;

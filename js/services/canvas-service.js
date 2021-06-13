@@ -1,8 +1,8 @@
 var gElCanvas;
 var gCtx;
 
-function initCanvas() {
-    gElCanvas = document.querySelector('.canvas');
+function initCanvas(elCanvas) {
+    gElCanvas = elCanvas;
     gCtx = gElCanvas.getContext('2d');
     addListeners();
 }
@@ -21,13 +21,13 @@ function renderCanvas() {
 function drawText(line, pos, lineIdx) {
     gCtx.beginPath();
     gCtx.font = line.size + 'px ' + line.fontFamily.toLowerCase();
-    gCtx.font += ', Haettenschweiler, Arial Narrow Bold, sans-serif';
     gCtx.textAlign = "center";
     gCtx.textBaseline = "middle";
     var rectHeight = line.size + 10;
     var rectWidth = gCtx.measureText(line.txt).width + 20;
     var rectX = pos.x;
     var rectY = pos.y;
+
     if (lineIdx === gMeme.selectedLineIdx) {
         _markText(rectX, rectY, rectHeight, rectWidth);
     }

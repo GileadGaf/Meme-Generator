@@ -10,8 +10,8 @@
 </head>
 
 <body onload="onInit()">
-    <section class="main-container">
-        <header class="main-header">
+    <section>
+        <header>
             <div class="logo">
                 <h1>Meme-Gen</h1>
             </div>
@@ -43,8 +43,10 @@
                     </section>
                 </div>
                 <section class="more-options">
-                    <button class="btn" onclick="onChangeTextPos(-10)">⬆</button>
-                    <button class="btn" onclick="onChangeTextPos(10)">⬇</button>
+                    <img src="img/icons/up.png" class="btn" alt="" onclick="onChangeTextPos(-10)">
+                    <img src="img/icons/down.png" class="btn" alt="" onclick="onChangeTextPos(10)">
+                    <!-- <button class="btn" onclick="onChangeTextPos(-10)">⬆</button>
+                    <button class="btn" onclick="onChangeTextPos(10)">⬇</button> -->
 
                     <img class="increase-font" src="img/icons/increase font - icon.png" onclick="onChangeFontSize(1)" />
                     <img class="decrease-font" src="img/icons/decrease font - icon.png" onclick="onChangeFontSize(-1)" />
@@ -54,21 +56,23 @@
                         <option value="ARIAL">Arial</option>
                     </select>
 
-                    <div class="text-color-pick">
+                    <label class="text-color-pick ">
                         <input name="text-color-picker" type="color" oninput="onChangeTextStrokeColor(this.value)" />
-                    </div>
+                        <img class="object-fit-contain icon30" src="img/icons/text-stroke.png" alt="">
+                    </label>
 
-                    <div class="color-pick">
+                    <label class="color-pick ">
                         <input name="color-picker" type="color" oninput="onChangeTextColor(this.value)" />
-                    </div>
+                        <img  src="img/icons/paint-board-and-brush.png" alt="">
+                    </label>
                 </section>
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                     <section class="share-and-download-container">
-                        <div class="share-btn btn">
+                        <div class="share-btn btn ">
                             <input name="img" id="imgData" type="hidden" />
                             <button class="share-title" type="submit">
-                            <img src="img/icons/share.png" alt="share"/>
-                           Share</button>
+                            <img src="img/icons/share.png" alt="share33"/>
+                                               Share</button>
                         </div>
                         <div class="download-btn btn" onclick="downloadCanvas(this)">
                             <a class="download-title">

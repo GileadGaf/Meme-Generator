@@ -1,21 +1,23 @@
 function onInit() {
     loadImages();
-    initCanvas();
+    initCanvas(document.querySelector('.canvas'));
     window.addEventListener('resize', resizeCanvas);
 }
 
 function resizeCanvas() {
+    if (!isMemeEditActive()) return;
     var elContainer = document.querySelector('.canvas-container');
-    //It seems that sometimes (might be rare so barely catched it) elContainer.offsetWidth is 0 and therefore the user doesn't see it
-    if (!elContainer.offsetWidth) console.log('size 0');
     // Note: changing the canvas dimension this way clears the canvas
     var selectedImg = getImg();
     var img = new Image();
     img.src = selectedImg.url;
-    var elCanvas = getCanvas();
-    elCanvas.width = elContainer.offsetWidth;
-    elCanvas.height = (img.height * elCanvas.width) / img.width;
-    renderCanvas();
+    img.onload = () => {
+        var elCanvas = getCanvas();
+        elCanvas.width = elContainer.offsetWidth;
+        elCanvas.height = (img.height * elCanvas.width) / img.width;
+        renderCanvas();
+    };
+
 }
 
 
@@ -47,6 +49,7 @@ function backToGallery() {
     elEditorBox.hidden = true;
     var elGalleryNav = document.querySelector('.gallery-nav');
     elGalleryNav.classList.add('active');
+    clearMeme();
     var elGallery = document.querySelector('.images-gallery');
     elGallery.classList.add('grid');
     document.body.classList.remove('menu-open');
