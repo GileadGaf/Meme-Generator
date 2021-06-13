@@ -14,20 +14,8 @@ function getCanvas() {
 function renderCanvas() {
     if (!gCtx) return;
     gCtx.save();
-    drawMeme();
+    _drawMeme();
     gCtx.restore();
-}
-
-
-function drawMeme() {
-    var selectedImg = getImg();
-    var img = new Image();
-    img.src = selectedImg.url;
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-        addText();
-
-    }
 }
 
 function drawText(line, pos, lineIdx) {
@@ -50,7 +38,37 @@ function drawText(line, pos, lineIdx) {
     gCtx.lineWidth = 2;
     gCtx.fillText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
     gCtx.strokeText(line.txt, rectX + rectWidth / 2, rectY + rectHeight / 2);
+}
 
+function getTextWidth(txt) {
+    return gCtx.measureText(txt).width;
+}
+
+//Default yPosition
+function getLinePosIdxBased(lineIdx) {
+    //Middle pos
+    var pos = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 };
+    switch (lineIdx) {
+        //1st line will be at the top of the canvas-about 50px from start
+        case 0:
+            pos.y = 50;
+            break;
+            //2nd line will be at the bottom of the canvas-about 50px from end
+        case 1:
+            pos.y = gElCanvas.height - 50;
+    }
+    //The rest of the lines will be positioned at the center of the canvas
+    return pos;
+}
+
+function _drawMeme() {
+    var selectedImg = getImg();
+    var img = new Image();
+    img.src = selectedImg.url;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+        addText();
+    }
 }
 
 function _markText(x, y, rectHeight, rectWidth) {
@@ -71,29 +89,4 @@ function _drawArc(x, y, size = 10, color = 'blue') {
     gCtx.fillStyle = color
     gCtx.fill()
     gCtx.closePath();
-}
-
-function getTextWidth(txt) {
-    return gCtx.measureText(txt).width;
-}
-
-//Default yPosition
-function getLinePosIdxBased(lineIdx) {
-    //Middle pos
-    var pos = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 };
-
-    switch (lineIdx) {
-        //1st line will be at the top of the canvas-about 50px from start
-        case 0:
-            pos.y = 50;
-            break;
-            //2nd line will be at the bottom of the canvas-about 50px from end
-        case 1:
-            pos.y = gElCanvas.height - 50;
-
-
-
-    }
-    //The rest of the lines will be positioned at the center of the canvas
-    return pos;
 }

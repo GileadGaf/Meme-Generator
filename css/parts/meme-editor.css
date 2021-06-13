@@ -186,6 +186,7 @@
     
     @media (max-width:1150px) {
         .editor-box {
+            flex-direction: column;
             align-items: center;
         }
     }
@@ -195,9 +196,6 @@
         .editor-box {
             flex-direction: column;
             align-items: center;
-        }
-        .canvas-container {
-            height: 50vh;
         }
         .control-box {
             width: 100%;
@@ -210,6 +208,9 @@
     
     @media (max-width: 500px) {
         /* EDITOR  */
+        .canvas-container {
+            width: 100%;
+        }
         .editor-box .control-box {
             width: 100%;
             position: relative;
