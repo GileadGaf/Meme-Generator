@@ -1,0 +1,228 @@
+    /* CANVAS EDITOR  */
+    
+    .canvas-container {
+        display: block;
+    }
+    /*  CONTROL BOX */
+    
+    .editor-box {
+        display: none;
+        justify-content: center;
+        margin: 20px 0;
+        gap: 50px;
+    }
+    
+    .canvas-container .canvas {
+        border-radius: 3rem;
+    }
+    
+    .editor-box .control-box {
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border: 1px solid;
+        border-radius: 3rem;
+        background-color: #383B42;
+    }
+    
+    .editor-box .control-box [name=line-text] {
+        margin: 20px;
+        padding: 0.5rem;
+        border-radius: 3rem;
+        text-align: center;
+        font-size: 1.1875rem;
+    }
+    
+    .editor-box .control-box .lines-managment {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .editor-box .control-box .lines-managment img {
+        width: 55px;
+        padding: 17px;
+        margin-inline-start: 10px;
+    }
+    
+    .control-box img {
+        width: 30px;
+        vertical-align: middle;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .control-box img:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+    /*COLORS OF THE ICONS */
+    
+    .control-box .lines-switch {
+        background-color: #4CB7D2;
+    }
+    
+    .control-box .add {
+        background-color: #3ED455;
+    }
+    
+    .control-box .trash {
+        background-color: #D62837;
+    }
+    
+    .more-options {
+        background-color: #19A59F;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+        flex-wrap: wrap;
+        padding: 20px;
+        margin: 27px 0;
+        border-radius: 5px;
+    }
+    
+    .more-options * {
+        background-color: #fff;
+        border: 1px solid #222;
+        border-radius: 5px;
+    }
+    
+    .more-options *:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+    
+    .more-options .btn {
+        font-size: 1.1rem;
+        padding: 1px;
+        width: 30px;
+        height: 1.875rem;
+    }
+    
+    .more-options select[name=select-font-family] {
+        width: 50%;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+    
+    .more-options .text-color-pick {
+        background: url(../../img/icons/text-stroke.png) no-repeat;
+        background-color: #fff;
+        background-size: contain;
+        background-position: center;
+        width: 30px;
+        height: 1.875rem;
+    }
+    
+    .control-box .text-color-pick input[name=text-color-picker] {
+        cursor: pointer;
+        opacity: 0;
+    }
+    
+    .more-options .color-pick {
+        background: url(../../img/icons/paint-board-and-brush.png) no-repeat;
+        background-color: #fff;
+        background-size: contain;
+        background-position: center;
+        width: 30px;
+        height: 1.875rem;
+    }
+    
+    .control-box .color-pick input[name=color-picker] {
+        cursor: pointer;
+        opacity: 0;
+    }
+    /*SHARE AND DOWNLOAD */
+    
+    .share-and-download-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .share-and-download-container .btn {
+        color: white;
+        flex: 1;
+        font-size: 0.8125rem;
+        border-radius: 1rem;
+        width: 200px;
+        padding: 15px 0 10px;
+        cursor: pointer;
+    }
+    
+    .share-and-download-container .btn:hover {
+        opacity: 0.7;
+    }
+    
+    .share-and-download-container .btn img {
+        width: 24px;
+        margin-right: 1rem;
+    }
+    
+    .share-btn {
+        background-color: #1E7CD3;
+        margin-right: 5px;
+    }
+    
+    .download-btn {
+        background-color: #8F44BB;
+        margin-left: 5px;
+    }
+    
+    .download-btn a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .share-btn button {
+        background-color: #1E7CD3;
+        border: none;
+        color: white;
+        font-size: 1.06rem;
+        cursor: pointer;
+    }
+    
+    @media (max-width:1150px) {
+        .editor-box {
+            align-items: center;
+        }
+    }
+    
+    @media (max-width: 800px) {
+        /* EDITOR  */
+        .editor-box {
+            flex-direction: column;
+            align-items: center;
+        }
+        .canvas-container {
+            height: 50vh;
+        }
+        .control-box {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .control-box .more-options select[name=select-font-family] {
+            width: 33%;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        /* EDITOR  */
+        .editor-box .control-box {
+            width: 100%;
+            position: relative;
+            margin: 0;
+        }
+        .editor-box .control-box [name=line-text] {
+            font-size: 0.8rem;
+            margin: 0px 0 5px;
+        }
+        .editor-box .control-box .more-options {
+            margin: 10px 0;
+        }
+        .share-and-download-container .btn {
+            width: 150px;
+        }
+    }

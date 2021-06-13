@@ -100,7 +100,7 @@ function getEvPos(ev) {
         y: ev.offsetY
     }
     if (gTouchEvs.includes(ev.type)) {
-        ev.preventDefault()
+        // ev.preventDefault()
         ev = ev.changedTouches[0]
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,

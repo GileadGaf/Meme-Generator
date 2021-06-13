@@ -14,12 +14,12 @@ function getCanvas() {
 function renderCanvas() {
     if (!gCtx) return;
     gCtx.save();
-    drawImage();
+    drawMeme();
     gCtx.restore();
 }
 
 
-function drawImage() {
+function drawMeme() {
     var selectedImg = getImg();
     var img = new Image();
     img.src = selectedImg.url;

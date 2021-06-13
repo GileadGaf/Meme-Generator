@@ -6,13 +6,15 @@ function onInit() {
 
 function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container');
+    //It seems that sometimes (might be rare so barely catched it) elContainer.offsetWidth is 0 and therefore the user doesn't see it
+    if (!elContainer.offsetWidth) console.log('size 0');
     // Note: changing the canvas dimension this way clears the canvas
     var selectedImg = getImg();
     var img = new Image();
     img.src = selectedImg.url;
     var elCanvas = getCanvas();
     elCanvas.width = elContainer.offsetWidth;
-    elCanvas.height = (img.height * gElCanvas.width) / img.width;
+    elCanvas.height = (img.height * elCanvas.width) / img.width;
     renderCanvas();
 }
 
@@ -27,7 +29,9 @@ function loadImages() {
 }
 
 function imgClicked(imgId) {
-    document.querySelector('.editor-box').classList.add('flex');
+    var elEditorBox = document.querySelector('.editor-box');
+    elEditorBox.classList.add('flex');
+    elEditorBox.hidden = false;
     var elGalleryNav = document.querySelector('.gallery-nav');
     elGalleryNav.classList.remove('active');
     setMeme(imgId);
@@ -38,7 +42,9 @@ function imgClicked(imgId) {
 }
 
 function backToGallery() {
-    document.querySelector('.editor-box').classList.remove('flex');
+    var elEditorBox = document.querySelector('.editor-box');
+    elEditorBox.classList.remove('flex');
+    elEditorBox.hidden = true;
     var elGalleryNav = document.querySelector('.gallery-nav');
     elGalleryNav.classList.add('active');
     var elGallery = document.querySelector('.images-gallery');
